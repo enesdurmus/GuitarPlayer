@@ -1,46 +1,90 @@
 <!doctype html>
 <html>
-  <head>
-    
-    <title>GuitarPlayer</title>
-    
-    <style>  
-      hr
-      {  
-        width: 80%;  
-        height: 2px;  
-        background-color: black;  
-        margin-bottom: 7px;  
-        margin-right: auto;  
-        margin-left: auto;  
-        margin-top: 9px;
-      }  
-      </style>  
-  
-  </head>
-  
 
-  <body>
+<head>
 
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
+  <title>GuitarPlayer</title>
 
-    <input type="button" value="PLAY" onclick="play()">
-    <audio id="audio" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/Kayit%20(18).ogg"></audio>
-    
+  <style>
+    hr {
+      width: 80%;
+      height: 1px;
+      background-color: black;
+      margin-right: auto;
+      margin-left: auto;
+    }
 
-    <script>
-      function play() {
-        var audio = document.getElementById("audio");
-        audio.play();
-      }
-    </script>
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: fit-content;
+      border: 1px solid #ddd;
+    }
+
+    th,td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2
+    }
+  </style>
+
+</head>
 
 
+<body>
 
-  </body>
+  <div style="overflow-x:auto;">
+    <table>
+      <tr>
+        <th>Points</th>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <td><input type="text" size="1"/></td>
+        <th>Points</th>
+        <th>Points</th>
+        <th>Points</th>
+        <th>Points</th>
+        <th>Points</th>
+        <th>Points</th>
+        <th>Points</th>
+        <th>Points</th>
+      </tr>
+    </table>
+  </div>
+
+  <input type="button" value="PLAY" onclick="play()">
+  <audio id="audio" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/Kayit%20(18).ogg"></audio>
+
+
+  <script>
+    function play() {
+      var audio = document.getElementById("audio");
+      audio.play();
+    }
+  </script>
+
+
+
+</body>
+
 </html>
