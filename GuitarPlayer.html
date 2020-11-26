@@ -14,21 +14,23 @@
       margin-left: auto;
     }
 
-    table {
-      border-collapse: collapse;
-      border-spacing: 0;
-      width: fit-content;
-      border: 1px solid #ddd;
+    div.backGround {
+      width: auto;
+      background-image: url("https://enesdurmus.github.io/GuitarPlayer/Images/Screenshot_1.png");
     }
 
-    th,td {
-      text-align: left;
-      padding: 8px;
+    div.string {
+      width: auto;
+      margin: 50px;
+    }
+    span.note {
+      display: inline-block;
+      width: 20px;
+      height: 14px;
+      border-right: 2px solid rgb(0, 0, 0);;
     }
 
-    tr:nth-child(even) {
-      background-color: #f2f2f2
-    }
+
   </style>
 
 </head>
@@ -36,43 +38,25 @@
 
 <body>
 
-  <div style="overflow-x:auto;">
-    <table>
-      <tr>
-        <th>Points</th>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <td><input type="text" size="1"/></td>
-        <th>Points</th>
-        <th>Points</th>
-        <th>Points</th>
-        <th>Points</th>
-        <th>Points</th>
-        <th>Points</th>
-        <th>Points</th>
-        <th>Points</th>
-      </tr>
-    </table>
+  <div class="backGround">
+    <div class="string" id="A">  
+      <span class="note" id="sa"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+    </div>
+    <div class="string" id="B">
+      <span class="note" id="sa"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+    </div>
   </div>
 
-  <input type="button" value="PLAY" onclick="play()">
   <audio id="audio" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/Kayit%20(18).ogg"></audio>
 
 
@@ -81,6 +65,8 @@
       var audio = document.getElementById("audio");
       audio.play();
     }
+
+    document.getElementById("sa").addEventListener("click", play);
   </script>
 
 
