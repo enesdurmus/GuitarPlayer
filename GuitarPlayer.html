@@ -4,41 +4,51 @@
 <head>
 
   <title>GuitarPlayer</title>
-
-  <style>
-    hr {
-      width: 80%;
-      height: 1px;
-      background-color: black;
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    div.guitarContainer {
-      width: auto;
-      background-image: url("https://enesdurmus.github.io/GuitarPlayer/Images/Screenshot_1.png");
-    }
-
-    div.guitarString {
-      width: auto;
-      margin: 50px;
-    }
-    span.note {
-      display: inline-block;
-      width: 20px;
-      height: 14px;
-    }
-
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 
 </head>
 
 
 <body>
-
+  <audio id="audio" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/Kayit%20(18).ogg"></audio>
+  
   <div class="guitarContainer">
-    <div class="guitarString" id="A">  
+    <div class="guitarString" id="A">
+      <span class="note" id="sa"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+    </div>
+    <div class="guitarString" id="B">
+      <span class="note" id="sa"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+    </div>
+    <div class="guitarString" id="B">
+      <span class="note" id="sa"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+    </div>
+    <div class="guitarString" id="B">
+      <span class="note" id="sa"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+      <span class="note"></span>
+    </div>
+    <div class="guitarString" id="B">
       <span class="note" id="sa"></span>
       <span class="note"></span>
       <span class="note"></span>
@@ -55,18 +65,6 @@
       <span class="note"></span>
     </div>
   </div>
-
-  <audio id="audio" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/Kayit%20(18).ogg"></audio>
-
-
-  <script>
-    function play() {
-      var audio = document.getElementById("audio");
-      audio.play();
-    }
-
-    document.getElementById("sa").addEventListener("click", play);
-  </script>
 
 
 
