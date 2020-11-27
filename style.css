@@ -7,18 +7,20 @@
     }
 
     div.guitarContainer {
+      position: relative;
       width: auto;
+      height: 100%;
       background-image: url("https://enesdurmus.github.io/GuitarPlayer/Images/back.png");
     }
 
-    div.guitarString {
-      width: auto;
-      background-image: url("https://enesdurmus.github.io/GuitarPlayer/Images/string.png");
-      height: 10px;
-      margin: 20px;
-    }
+  div.guitarString {
+    width: auto;
+    background-image: url("https://enesdurmus.github.io/GuitarPlayer/Images/string.png");
+    height: 10px;
+    margin: 22px;
+  }
     span.note {
       display: inline-block;
-      width: 20px;
-      height: 14px;
+      width: 50px;
+      height: 30px;
     }
