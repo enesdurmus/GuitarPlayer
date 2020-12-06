@@ -23,13 +23,13 @@
   }
 
   div.GuitarBackground {
-    background-color: darkred;
+    background-color: black;
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
-    height: 200px;
+    width: 360px;
+    height: 190px;
   }
 
   span.PlayButton{
@@ -37,6 +37,13 @@
     background-color: maroon;
     color: magenta;
     text-align: left;
+  }
+  span.String{
+    display: flex;
+    width: 340px;
+    height: 30px;
+    margin-left: 20px;
+    background-image: repeating-linear-gradient(black 0px,black 15px, white 15px, white 20px);
   }
   h1.Head{
     color: seashell;
@@ -49,10 +56,12 @@
   <div class="Conteiner">
     <h1 class="Head">Virtual Guitar</h1>
     <div class="GuitarBackground">
-      A
-      <hr>
-      B
-      <hr>
+      <span class="String"></span>
+      <span class="String"></span>
+      <span class="String"></span>
+      <span class="String"></span>
+      <span class="String"></span>
+      <span class="String"></span>
     </div>
     <br><br>
     <span class="PlayButton">Play</span>
