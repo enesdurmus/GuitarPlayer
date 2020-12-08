@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>GuitarPlayer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+</head>
+<style>
+  body {
+    background-color: #222831;
+  }
+
+  div.Conteiner {
+    width: inherit;
+    height: inherit;
+  }
+
+  div.GuitarBackground {
+    background-color: #eeeeee;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 250px;
+  }
+
+  ul{
+    width: 400px;
+    height: 250px;
+    padding-left: 10px;
+  }
+  li{
+    display: inline-block;
+    border-right: 2px solid #8f8f8f;
+    flex-direction: column;
+    width: 22px;
+    height: 250px;
+  }
+
+  button.PlayButton {
+    font-size: 50px;
+    background-color: #c5a880;
+    color: #0f0f0f;
+    font-family: 'Gill Sans MT';
+    font-style: italic;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  button.StopButton {
+    font-size: 50px;
+    font-style: italic;
+    font-family: 'Gill Sans MT';
+    background-color: #c5a880;
+    color: #0f0f0f;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  button.RecordButton {
+    font-size: 50px;
+    font-style: italic;
+    font-family: 'Gill Sans MT';
+    background-color: #c5a880;
+    margin-left: auto;
+    margin-right: 0;
+    color: #0f0f0f;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  h1 {
+    color: #eeeeee;
+    font-size: 50px;
+    text-align: center;
+  }
+</style>
+
+<body>
+  <audio id="audio" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/Kayit%20(18).ogg"></audio>
+
+  <div class="Conteiner">
+    <h1>Virtual Guitar</h1>
+    <div class="GuitarBackground">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+    </div>
+    <button class="PlayButton">Play</button>
+    <button class="StopButton">Stop</button>
+    <button class="RecordButton">Record</button>
+  </div>
+</body>
+
+</html>
