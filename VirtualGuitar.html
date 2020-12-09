@@ -30,12 +30,19 @@
     height: 250px;
   }
 
-  ul{
+  div.ButtonsContainer {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  ul.guitarNeck {
     width: 400px;
     height: 250px;
     padding-left: 10px;
   }
-  li{
+
+  li.GuitarNeck-ul-li {
     display: inline-block;
     border-right: 2px solid #8f8f8f;
     flex-direction: column;
@@ -43,14 +50,32 @@
     height: 250px;
   }
 
+  ul.firstFret {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-inline-start: 0;
+  }
+
+  li.firstFret-ul-li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    marker: none;
+  }
+
+
   button.PlayButton {
     font-size: 50px;
     background-color: #c5a880;
     color: #0f0f0f;
     font-family: 'Gill Sans MT';
+    margin-left: 10%;
+    margin-right: auto;
     font-style: italic;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   button.StopButton {
@@ -62,7 +87,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   button.RecordButton {
@@ -71,10 +96,10 @@
     font-family: 'Gill Sans MT';
     background-color: #c5a880;
     margin-left: auto;
-    margin-right: 0;
+    margin-right: 10%;
     color: #0f0f0f;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   h1 {
@@ -90,27 +115,33 @@
   <div class="Conteiner">
     <h1>Virtual Guitar</h1>
     <div class="GuitarBackground">
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      <ul class="guitarNeck">
+        <li class="GuitarNeck-ul-li">
+          <ul class="firstFret">
+            <li class="firstFret-ul-li">A</li>
+          </ul>
+        </li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
+        <li class="GuitarNeck-ul-li"></li>
       </ul>
 
     </div>
-    <button class="PlayButton">Play</button>
-    <button class="StopButton">Stop</button>
-    <button class="RecordButton">Record</button>
+
+    <div class="ButtonsContainer"> <button class="PlayButton">Play</button>
+      <button class="StopButton">Stop</button>
+      <button class="RecordButton">Record</button></div>
+
   </div>
 </body>
 
