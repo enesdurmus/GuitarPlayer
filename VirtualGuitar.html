@@ -327,7 +327,11 @@
     console.log("bastın");
     audio.play();
   }
-
+  window.onclick = e => {
+    console.log(e.target);  // to get the element
+    console.log(e.target.tagName);  // to get the element tag name alone
+    console.log(e.target.innerText);
+  }
   document.getElementById("sa").addEventListener("click", play);
 </script>
 
