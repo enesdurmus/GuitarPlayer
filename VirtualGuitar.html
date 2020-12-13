@@ -10,165 +10,9 @@
   <script src="script.js" defer></script>
 
 </head>
-<style>
-  body {
-    background-color: #222831;
-  }
-
-  div.Conteiner {
-    width: inherit;
-    height: inherit;
-  }
-
-  div.GuitarBackground {
-    display: flex;
-    background-color: #eeeeee;
-    background-size: contain;
-    margin-left: auto;
-    margin-right: auto;
-    width: 400px;
-    height: 225px;
-  }
-
-  div.ButtonsContainer {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  ul.guitarNeck {
-    margin-block-start: 0;
-    justify-content: space-between;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding-left: 1px;
-  }
-
-  li.GuitarNeck-ul-li {
-    display: flex;
-    border-right: 2px solid #8f8f8f;
-    flex-direction: column;
-    width: 22px;
-    height: 225px;
-  }
-
-  ul.firstFret {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding-inline-start: 0;
-  }
-
-  li.firstFret-ul-li {
-    display: flex;
-    height: 38px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    color: #0f0f0f;
-    font-size: 15px;
-    font-style: italic;
-    font-family: 'Gill Sans MT';
-  }
-
-  ul li::marker {
-    font-size: 0;
-  }
-
-  ul.Strings {
-    display: block;
-    position: absolute;
-    width: 380px;
-    height: 225px;
-    padding-inline-start: 14px;
-  }
-
-  li.String-li {
-    display: block;
-    width: 100%;
-    height: 38px;
-  }
-
-  span.string {
-    display: flex;
-    height: 4px;
-    width: 100%;
-    position: relative;
-    top: 17px;
-    box-shadow: 0.04em 0.37em 0.02em 0 rgba(0, 0, 0, .1);
-    background-image: repeating-linear-gradient(50deg, rgba(0, 0, 0, .6), transparent .15em, transparent .2em),
-      linear-gradient(180deg, rgba(0, 0, 0, .1) 10%, hsla(0, 0%, 100%, .25) 15%, hsla(0, 0%, 100%, .8) 30%,
-        hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
-    margin-left: 3px;
-  }
-
-  span.note {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    width: 100%;
-    height: 38px;
-    z-index: 2;
-  }
-
-  span.noteFirstFret {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 38px;
-    text-align: left;
-    z-index: 2;
-
-  }
-
-  button.PlayButton {
-    font-size: 50px;
-    background-color: #c5a880;
-    color: #0f0f0f;
-    font-family: 'Gill Sans MT';
-    margin-left: 10%;
-    margin-right: auto;
-    font-style: italic;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  button.StopButton {
-    font-size: 50px;
-    font-style: italic;
-    font-family: 'Gill Sans MT';
-    background-color: #c5a880;
-    color: #0f0f0f;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  button.RecordButton {
-    font-size: 50px;
-    font-style: italic;
-    font-family: 'Gill Sans MT';
-    background-color: #c5a880;
-    margin-left: auto;
-    margin-right: 10%;
-    color: #0f0f0f;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  h1 {
-    color: #eeeeee;
-    font-size: 50px;
-    text-align: center;
-  }
-</style>
 
 <body>
-  <audio id="audio" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/Kayit%20(18).ogg"></audio>
+  <audio id="0" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/Kayit%20(18).ogg" preload="auto"></audio>
 
   <div class="Conteiner">
     <h1 id="sa">Virtual Guitar</h1>
@@ -176,118 +20,118 @@
       <ul class="guitarNeck">
         <li class="GuitarNeck-ul-li">
           <ul class="firstFret">
-            <li class="firstFret-ul-li"><span class="noteFirstFret">E</span> </li>
-            <li class="firstFret-ul-li"><span class="noteFirstFret">B</span> </li>
-            <li class="firstFret-ul-li"><span class="noteFirstFret">G</span> </li>
-            <li class="firstFret-ul-li"><span class="noteFirstFret">D</span> </li>
-            <li class="firstFret-ul-li"><span class="noteFirstFret">A</span> </li>
-            <li class="firstFret-ul-li"><span class="noteFirstFret">E</span> </li>
+            <li class="firstFret-ul-li">E<span class="note">0</span> </li>
+            <li class="firstFret-ul-li">B<span class="note">1</span> </li>
+            <li class="firstFret-ul-li">G<span class="note">2</span> </li>
+            <li class="firstFret-ul-li">D<span class="note">3</span> </li>
+            <li class="firstFret-ul-li">A<span class="note">4</span> </li>
+            <li class="firstFret-ul-li">E<span class="note">5</span> </li>
           </ul>
         </li>
 
         <li class="GuitarNeck-ul-li">
-          <span class="note" id="1">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">6</span>
+          <span class="note">7</span>
+          <span class="note">8</span>
+          <span class="note">9</span>
+          <span class="note">10</span>
+          <span class="note">11</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">12</span>
+          <span class="note">13</span>
+          <span class="note">14</span>
+          <span class="note">15</span>
+          <span class="note">16</span>
+          <span class="note">17</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">18</span>
+          <span class="note">19</span>
+          <span class="note">20</span>
+          <span class="note">21</span>
+          <span class="note">22</span>
+          <span class="note">23</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">24</span>
+          <span class="note">25</span>
+          <span class="note">26</span>
+          <span class="note">27</span>
+          <span class="note">28</span>
+          <span class="note">29</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">30</span>
+          <span class="note">31</span>
+          <span class="note">32</span>
+          <span class="note">33</span>
+          <span class="note">34</span>
+          <span class="note">35</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">36</span>
+          <span class="note">37</span>
+          <span class="note">38</span>
+          <span class="note">39</span>
+          <span class="note">40</span>
+          <span class="note">41</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">42</span>
+          <span class="note">43</span>
+          <span class="note">44</span>
+          <span class="note">45</span>
+          <span class="note">46</span>
+          <span class="note">47</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">48</span>
+          <span class="note">49</span>
+          <span class="note">50</span>
+          <span class="note">51</span>
+          <span class="note">52</span>
+          <span class="note">53</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">54</span>
+          <span class="note">55</span>
+          <span class="note">56</span>
+          <span class="note">57</span>
+          <span class="note">58</span>
+          <span class="note">59</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">60</span>
+          <span class="note">61</span>
+          <span class="note">62</span>
+          <span class="note">63</span>
+          <span class="note">64</span>
+          <span class="note">65</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">66</span>
+          <span class="note">67</span>
+          <span class="note">68</span>
+          <span class="note">69</span>
+          <span class="note">70</span>
+          <span class="note">71</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note">72</span>
+          <span class="note">73</span>
+          <span class="note">74</span>
+          <span class="note">75</span>
+          <span class="note">76</span>
+          <span class="note">77</span>
         </li>
         <li class="GuitarNeck-ul-li">
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
-          <span class="note">___</span>
+          <span class="note"></span>
+          <span class="note"></span>
+          <span class="note"></span>
+          <span class="note"></span>
+          <span class="note"></span>
+          <span class="note"></span>
         </li>
         <ul class="Strings">
           <li class="String-li">
@@ -321,18 +165,31 @@
 
   </div>
 </body>
+
 <script>
+
   function play() {
-    var audio = document.getElementById("audio");
+    var audio = document.getElementById("0");
     console.log("bastın");
     audio.play();
   }
-  window.onclick = e => {
-    console.log(e.target);  // to get the element
-    console.log(e.target.tagName);  // to get the element tag name alone
-    console.log(e.target.innerText);
+  var notes = [];
+
+  function fillNotesList() {
+    for (let i = 0; i < 1; i++) {
+      notes.push(document.getElementById(i));
+    }
   }
-  document.getElementById("sa").addEventListener("click", play);
+  fillNotesList();
+
+
+  window.onclick = e => {
+    let audio = notes[Number(e.target.innerText)];
+    console.log(e.target.innerText);
+    console.log(audio);
+    audio.play();
+  }
 </script>
+
 
 </html>
