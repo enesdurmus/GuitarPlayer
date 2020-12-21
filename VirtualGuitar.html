@@ -154,14 +154,14 @@
           </li>
         </ul>
       </ul>
-
+      <div class="ButtonsContainer">
+        <button class="PlayButton">Play</button>
+        <button class="StopButton">Stop</button>
+        <button class="RecordButton">Record</button>
+      </div>
     </div>
 
-    <div class="ButtonsContainer">
-      <button class="PlayButton">Play</button>
-      <button class="StopButton">Stop</button>
-      <button class="RecordButton">Record</button>
-    </div>
+
 
   </div>
 </body>
@@ -171,6 +171,7 @@
   function play() {
     var audio = document.getElementById("0");
     console.log("bastın");
+    audio.currentTime = 0;
     audio.play();
   }
   var notes = [];
@@ -187,6 +188,7 @@
     let audio = notes[Number(e.target.innerText)];
     console.log(e.target.innerText);
     console.log(audio);
+    audio.currentTime = 0;
     audio.play();
   }
 </script>
