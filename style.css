@@ -81,6 +81,7 @@ body {
 
   span.string {
     display: flex;
+    z-index: 1;
     height: 4px;
     width: 100%;
     position: relative;

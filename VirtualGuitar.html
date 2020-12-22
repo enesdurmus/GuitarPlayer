@@ -6,18 +6,19 @@
   <title>GuitarPlayer</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://enesdurmus.github.io/AdvancedTechWorks/Images/myicon.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 
 </head>
 
 <body>
-  <audio id="0" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/01.wav" preload="auto"></audio>
+  <audio id="0" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/00.wav" preload="auto"></audio>
   <audio id="1" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/01.wav" preload="auto"></audio>
-  <audio id="2" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/01.wav" preload="auto"></audio>
-  <audio id="3" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/01.wav" preload="auto"></audio>
-  <audio id="4" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/01.wav" preload="auto"></audio>
-  <audio id="5" src="C:\Users\X550V\Desktop\MyProjects\GuitarPlayer\GuitarPlayer\Sounds\02.wav" preload="auto"></audio>
+  <audio id="2" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/02.wav" preload="auto"></audio>
+  <audio id="3" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/03.wav" preload="auto"></audio>
+  <audio id="4" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/04.wav" preload="auto"></audio>
+  <audio id="5" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/05.wav" preload="auto"></audio>
 
 
   <div class="Conteiner">
@@ -141,22 +142,22 @@
         </li>
         <ul class="Strings">
           <li class="String-li">
-            <span class="string"></span>
+            <span id="s0" class="string"></span>
           </li>
           <li class="String-li">
-            <span class="string"></span>
+            <span id="s1" class="string"></span>
           </li>
           <li class="String-li">
-            <span class="string"></span>
+            <span id="s2" class="string"></span>
           </li>
           <li class="String-li">
-            <span class="string"></span>
+            <span id="s3" class="string"></span>
           </li>
           <li class="String-li">
-            <span class="string"></span>
+            <span id="s4" class="string"></span>
           </li>
           <li class="String-li">
-            <span class="string"></span>
+            <span id="s5" class="string"></span>
           </li>
         </ul>
       </ul>
@@ -173,15 +174,7 @@
 </body>
 
 <script>
-
-  function play() {
-    var audio = document.getElementById("0");
-    console.log("bastın");
-    audio.currentTime = 0;
-    audio.play();
-  }
   var notes = [];
-
   function fillNotesList() {
     for (let i = 0; i < 1; i++) {
       notes.push(document.getElementById(i));
@@ -190,12 +183,25 @@
   fillNotesList();
 
 
-  window.onclick = e => {
-    let audio = notes[Number(e.target.innerText)];
-    console.log(e.target.innerText);
-    console.log(audio);
+  function play(Note) {
+    var audio = document.getElementById(Note);
     audio.currentTime = 0;
     audio.play();
+  }
+
+  function stringShake(){
+    let elt = document.getElementById("s1");
+    console.log(elt);
+    let t1 = { transform: ["rotate(0deg)", "rotate(0.5deg)", "rotate(-0.5deg)"] };
+    elt.animate(t1,500);
+  }
+
+  window.onclick = e => {
+    if (Number(e.target.innerText) >= 0 && Number(e.target.innerText) <= 80) {
+      console.log(e.target.innerText);
+      play(e.target.innerText);
+      stringShake();
+    }
   }
 </script>
 
