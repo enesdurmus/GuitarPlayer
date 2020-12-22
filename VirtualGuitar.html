@@ -6,7 +6,8 @@
   <title>GuitarPlayer</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://enesdurmus.github.io/AdvancedTechWorks/Images/myicon.png">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://enesdurmus.github.io/GuitarPlayer/Images/VirtualGuitarIcon.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 
@@ -189,11 +190,11 @@
     audio.play();
   }
 
-  function stringShake(){
-    let elt = document.getElementById("s1");
+  function stringShake() {
+    var elt = document.getElementById("s1");
     console.log(elt);
-    let t1 = { transform: ["rotate(0deg)", "rotate(0.5deg)", "rotate(-0.5deg)"] };
-    elt.animate(t1,500);
+    var t1 =  { transform: ["rotate(90deg) "] };
+    elt.animate(t1, 500);
   }
 
   window.onclick = e => {
