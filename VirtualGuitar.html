@@ -14,12 +14,12 @@
 </head>
 
 <body>
-  <audio id="0" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/00.wav" preload="auto"></audio>
-  <audio id="1" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/01.wav" preload="auto"></audio>
-  <audio id="2" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/02.wav" preload="auto"></audio>
-  <audio id="3" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/03.wav" preload="auto"></audio>
-  <audio id="4" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/04.wav" preload="auto"></audio>
-  <audio id="5" src="https://enesdurmus.github.io/GuitarPlayer/Sounds/05.wav" preload="auto"></audio>
+  <audio id="0" src="Sounds/00.wav" preload="auto"></audio>
+  <audio id="1" src="Sounds/01.wav" preload="auto"></audio>
+  <audio id="2" src="Sounds/02.wav" preload="auto"></audio>
+  <audio id="3" src="Sounds/03.wav" preload="auto"></audio>
+  <audio id="4" src="Sounds/04.wav" preload="auto"></audio>
+  <audio id="5" src="Sounds/05.wav" preload="auto"></audio>
 
 
   <div class="Conteiner">
@@ -133,14 +133,7 @@
           <span class="note">76</span>
           <span class="note">77</span>
         </li>
-        <li class="GuitarNeck-ul-li">
-          <span class="note"></span>
-          <span class="note"></span>
-          <span class="note"></span>
-          <span class="note"></span>
-          <span class="note"></span>
-          <span class="note"></span>
-        </li>
+
         <ul class="Strings">
           <li class="String-li">
             <span id="s0" class="string"></span>
@@ -169,9 +162,9 @@
         </ul>
       </ul>
       <div class="ButtonsContainer">
-        <button class="PlayButton">Play</button>
-        <button class="StopButton">Stop</button>
-        <button class="RecordButton">Record</button>
+        <button class="PlayButton" onclick="PlayRecord()">Play</button>
+        <button class="StopButton" onclick="StopRecord()">Stop</button>
+        <button class="RecordButton" onclick="Record()">Record</button>
       </div>
     </div>
 
@@ -184,6 +177,7 @@
   var notes = [];
   var rotateList = [];
 
+  //Fill list with notes at the beginning of the program.
   function fillNotesList() {
     for (let i = 0; i < 1; i++) {
       notes.push(document.getElementById(i));
@@ -192,27 +186,40 @@
 
   fillNotesList();
 
+  //Fill tremble list with rotates at the beginning of the program.
   function fillRotateList() {
     var frequency = 1;
-    for (let i = 0; i < 30; i++) {
-      rotateList.push("rotate("+frequency+"deg)");
-      rotateList.push("rotate(-"+frequency+"deg)");
-      frequency -= 0.02;
+    for (let i = 0; i < 40; i++) {
+      rotateList.push("rotate(" + frequency + "deg)");
+      rotateList.push("rotate(-" + frequency + "deg)");
+      frequency -= 0.024; // The rotate is running by decreasing.
     }
   }
 
   fillRotateList();
 
+  var trembleList = { transform: rotateList };
 
-  function play(Note) {
-    var audio = document.getElementById(Note);
-    audio.currentTime = 0;
-    audio.play();
+  //Our note class we need it because of Record and PlayRecord functions.
+  class Note {
+    constructor(note, ms) {
+      this.note = note;
+      this.ms = ms;
+    }
   }
 
-  function stringTremble(stringN) {
-    var column = (stringN / 6);
-    var row = stringN % 6;
+
+  //When we press the string we call this function.
+  function Play(note) {
+    var audio = document.getElementById(note); //We get the audio by the given value. The value is between 0 to 80. all numbers define a note.
+    audio.currentTime = 0; // If we press the same place we restart the audio
+    audio.play();
+    StringTremble(note); //And when we play sound we tremble the string.
+  }
+
+  function StringTremble(note) {
+    var column = (note / 6);
+    var row = note % 6;
     // We get our strings.
     var animatedString = document.getElementById("sT" + row);
     var realString = document.getElementById("s" + row);
@@ -222,20 +229,68 @@
     // move animatedString to the end of real string
     animatedString.style.marginLeft = Math.trunc(column) * 7 + ".8%";
     // tremble the string.
-
-
-    var trembleList = { transform: rotateList };
-    animatedString.animate(trembleList, 2000);
+    animatedString.animate(trembleList, 2500);
   }
 
+
+  //This function waits according to the given ms.
+  function Wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  // The list that we recording in to.
+  var record = []
+
+  // When we press the play button this function called.
+  async function PlayRecord() {
+    for (let i = 0; i < record.length; i++) { 
+      await Wait(record[i].ms);        // We wait according to ms of record
+      if (record.length != 0) {        // If the record is not empty
+        Play(record[i].note);          // We play the note that recorded
+        console.log(record[i].note, record[i].ms);
+      }
+      else {
+        console.log("Record is empty")
+        break;
+      }
+    }
+  }
+
+
+  function StopRecord() {
+    record = []; // We clear the array to stop playing.
+  }
+
+  
+  var isRecording = 0;
+  var time1;
+  //When we press the record button this function called.
+  function Record() {
+    //This function just makes the global variable "isRecording" to 1 or 0 and global variable "time1" equals to dateNow.
+    if (isRecording == 0) {
+      time1 = Date.now();
+      isRecording = 1;
+    }
+    else {
+      isRecording = 0
+    }
+    console.log(isRecording);
+  }
+
+
   window.onclick = e => {
-    if (Number(e.target.innerText) >= 0 && Number(e.target.innerText) <= 80) {
-      console.log(e.target.innerText);
-      //   play(e.target.innerText);
-      stringTremble(Number(e.target.innerText));
+    if (e.target.tagName == "SPAN") { //if we press a note that means a span
+      console.log(e.target.tagName);
+      Play(e.target.innerText);       // call the play function.
+      if (isRecording == 1) {         // And if we are recording
+        let time2 = Date.now();       //we take the time.
+        console.log(time2 - time1);
+        note = new Note(Number(e.target.innerText), time2 - time1); //We create a note with pressed note and time between 2 note.
+        record.push(note);         // we add the note to the record list.
+        time1 = Date.now();        // we update the global variable time1.
+      }
     }
   }
 </script>
-
 
 </html>
