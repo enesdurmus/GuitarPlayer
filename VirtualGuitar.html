@@ -10,6 +10,7 @@
     href="https://enesdurmus.github.io/GuitarPlayer/Images/VirtualGuitarIcon.png">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
+  <script src="defaultSongs.js" defer></script>
 
 </head>
 
@@ -170,10 +171,10 @@
       </div>
 
       <div class="ComboBoxContainer">
-        <label class="ComboBoxLabel" for="songs">Choose A Song</label>
+        <label class="ComboBoxLabel" for="songs"> Choose A Song : </label>
         <select class="ComboBox" id="songs">
-          <option value="PiratesOfTheCaribbean">Pirates Of The Caribbean</option>
-          <option value="RohanTheme">Rohan Theme</option>
+          <option>Pirates Of The Caribbean</option>
+          <option>Rohan Theme</option>
         </select>
       </div>
     </div>
@@ -218,6 +219,14 @@
     }
   }
 
+  // We need this class because of PlaySelectedSong function.
+  class Song {
+    constructor(songName, song) {
+      this.songName = songName;
+      this.song = song;
+    }
+  }
+
 
   //When we press the string we call this function.
   function Play(note) {
@@ -251,7 +260,7 @@
   // The list that we recording in to.
   var record = []
   // The list that hold records.
-  var recordList = [];
+  var SongList = [];
 
   // When we press the play button this function called.
   async function PlayRecord() {
@@ -285,7 +294,6 @@
     }
     else {
       //We add the record to the recordList and the comboBox with name that user give us.
-      recordList = record;
       var selectTag = document.getElementById("songs");
       var option = document.createElement("option");
       var songName = prompt("Please Name Your Song");
@@ -294,15 +302,21 @@
       }
       option.text = songName;
       selectTag.add(option);
+      song = new Song(songName,record);
+      SongList.push(song);
       isRecording = 0
     }
     console.log(isRecording);
   }
 
-
   function PlaySelectedSong() {
-    var e = document.getElementById("songs");
-    var strUser = e.options[e.selectedIndex].text;
+    var songs = document.getElementById("songs");
+    var songName = songs.options[songs.selectedIndex].value;
+    for (let i = 0; i < SongList.length; i++) {
+      if(SongList[i].songName == songName){
+        PlayRecord(SongList[i].song);
+      } 
+    }
   }
 
   window.onclick = e => {
