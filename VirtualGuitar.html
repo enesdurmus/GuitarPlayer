@@ -144,21 +144,27 @@
         <ul class="Strings">
           <li class="String-li">
             <span id="s0" class="string"></span>
+            <span id="sT0" class="stringTremble"></span>
           </li>
           <li class="String-li">
             <span id="s1" class="string"></span>
+            <span id="sT1" class="stringTremble"></span>
           </li>
           <li class="String-li">
             <span id="s2" class="string"></span>
+            <span id="sT2" class="stringTremble"></span>
           </li>
           <li class="String-li">
             <span id="s3" class="string"></span>
+            <span id="sT3" class="stringTremble"></span>
           </li>
           <li class="String-li">
             <span id="s4" class="string"></span>
+            <span id="sT4" class="stringTremble"></span>
           </li>
           <li class="String-li">
             <span id="s5" class="string"></span>
+            <span id="sT5" class="stringTremble"></span>
           </li>
         </ul>
       </ul>
@@ -176,12 +182,26 @@
 
 <script>
   var notes = [];
+  var rotateList = [];
+
   function fillNotesList() {
     for (let i = 0; i < 1; i++) {
       notes.push(document.getElementById(i));
     }
   }
+
   fillNotesList();
+
+  function fillRotateList() {
+    var frequency = 1;
+    for (let i = 0; i < 30; i++) {
+      rotateList.push("rotate("+frequency+"deg)");
+      rotateList.push("rotate(-"+frequency+"deg)");
+      frequency -= 0.02;
+    }
+  }
+
+  fillRotateList();
 
 
   function play(Note) {
@@ -190,18 +210,29 @@
     audio.play();
   }
 
-  function stringShake() {
-    var elt = document.getElementById("s1");
-    console.log(elt);
-    var t1 =  { transform: ["rotate(90deg) "] };
-    elt.animate(t1, 500);
+  function stringTremble(stringN) {
+    var column = (stringN / 6);
+    var row = stringN % 6;
+    // We get our strings.
+    var animatedString = document.getElementById("sT" + row);
+    var realString = document.getElementById("s" + row);
+    // Arrange their width according to the column that the user press.
+    animatedString.style.width = 100 - Math.trunc(column) * 7 + "%";
+    realString.style.width = Math.trunc(column) * 7 + "%";
+    // move animatedString to the end of real string
+    animatedString.style.marginLeft = Math.trunc(column) * 7 + ".8%";
+    // tremble the string.
+
+
+    var trembleList = { transform: rotateList };
+    animatedString.animate(trembleList, 2000);
   }
 
   window.onclick = e => {
     if (Number(e.target.innerText) >= 0 && Number(e.target.innerText) <= 80) {
       console.log(e.target.innerText);
-      play(e.target.innerText);
-      stringShake();
+      //   play(e.target.innerText);
+      stringTremble(Number(e.target.innerText));
     }
   }
 </script>

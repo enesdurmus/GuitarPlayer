@@ -92,6 +92,21 @@ body {
         hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
     margin-left: 3px;
   }
+span.stringTremble {
+    display: flex;
+    z-index: 1;
+    height: 4px;
+    width: 0%;
+    position: relative;
+    top: 17px;
+    box-shadow: 0.04em 0.37em 0.02em 0 rgba(0, 0, 0, .1);
+    background-image: repeating-linear-gradient(50deg, rgba(0, 0, 0, .6), transparent .15em, transparent .2em),
+      linear-gradient(180deg, rgba(0, 0, 0, .1) 10%, hsla(0, 0%, 100%, .25) 15%, hsla(0, 0%, 100%, .8) 30%,
+        hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
+    margin-left: 3px;
+    margin-top: -4px;
+    transform-origin: left;
+  }
 
   span.note {
     display: flex;
