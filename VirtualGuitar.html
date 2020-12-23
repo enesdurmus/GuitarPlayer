@@ -161,10 +161,20 @@
           </li>
         </ul>
       </ul>
+
+
       <div class="ButtonsContainer">
-        <button class="PlayButton" onclick="PlayRecord()">Play</button>
+        <button class="PlayButton" onclick="PlaySelectedSong()">Play</button>
         <button class="StopButton" onclick="StopRecord()">Stop</button>
         <button class="RecordButton" onclick="Record()">Record</button>
+      </div>
+
+      <div class="ComboBoxContainer">
+        <label class="ComboBoxLabel" for="songs">Choose A Song</label>
+        <select class="ComboBox" id="songs">
+          <option value="PiratesOfTheCaribbean">Pirates Of The Caribbean</option>
+          <option value="RohanTheme">Rohan Theme</option>
+        </select>
       </div>
     </div>
 
@@ -211,7 +221,7 @@
 
   //When we press the string we call this function.
   function Play(note) {
-    var audio = document.getElementById(note); //We get the audio by the given value. The value is between 0 to 80. all numbers define a note.
+    var audio = document.getElementById(note); //We get the audio by the given value. The value is between 0 to 77. all numbers define a note.
     audio.currentTime = 0; // If we press the same place we restart the audio
     audio.play();
     StringTremble(note); //And when we play sound we tremble the string.
@@ -240,10 +250,12 @@
 
   // The list that we recording in to.
   var record = []
+  // The list that hold records.
+  var recordList = [];
 
   // When we press the play button this function called.
   async function PlayRecord() {
-    for (let i = 0; i < record.length; i++) { 
+    for (let i = 0; i < record.length; i++) {
       await Wait(record[i].ms);        // We wait according to ms of record
       if (record.length != 0) {        // If the record is not empty
         Play(record[i].note);          // We play the note that recorded
@@ -261,7 +273,7 @@
     record = []; // We clear the array to stop playing.
   }
 
-  
+
   var isRecording = 0;
   var time1;
   //When we press the record button this function called.
@@ -272,11 +284,26 @@
       isRecording = 1;
     }
     else {
+      //We add the record to the recordList and the comboBox with name that user give us.
+      recordList = record;
+      var selectTag = document.getElementById("songs");
+      var option = document.createElement("option");
+      var songName = prompt("Please Name Your Song");
+      if (songName == null || songName == "") {
+        songName = "Untitled";
+      }
+      option.text = songName;
+      selectTag.add(option);
       isRecording = 0
     }
     console.log(isRecording);
   }
 
+
+  function PlaySelectedSong() {
+    var e = document.getElementById("songs");
+    var strUser = e.options[e.selectedIndex].text;
+  }
 
   window.onclick = e => {
     if (e.target.tagName == "SPAN") { //if we press a note that means a span

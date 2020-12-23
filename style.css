@@ -23,6 +23,35 @@ body {
     margin-right: auto;
   }
 
+  div.ComboBoxContainer {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px; 
+  }
+
+  label.ComboBoxLabel{
+    font-size: 22px;
+    background-color: #c5a880;
+    color: #0f0f0f;
+    font-family: 'Gill Sans MT';
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+    text-align: center;
+  }
+
+  select.ComboBox{
+    font-size: 22px;
+    background-color: #c5a880;
+    color: #0f0f0f;
+    font-family: 'Gill Sans MT';
+    margin-left: 5px;
+    margin-right: auto;
+    font-style: italic;
+    text-align: center;
+  }
+
   ul.guitarNeck {
     margin-block-start: 0;
     justify-content: space-between;
