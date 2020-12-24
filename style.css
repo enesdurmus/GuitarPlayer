@@ -159,7 +159,7 @@ span.stringTremble {
   }
 
   button.PlayButton {
-    font-size: 30px;
+    font-size: 25px;
     background-color: #c5a880;
     color: #0f0f0f;
     font-family: 'Gill Sans MT';
@@ -171,7 +171,7 @@ span.stringTremble {
   }
 
   button.StopButton {
-    font-size: 30px;
+    font-size: 25px;
     font-style: italic;
     font-family: 'Gill Sans MT';
     background-color: #c5a880;
@@ -183,7 +183,7 @@ span.stringTremble {
   }
 
   button.RecordButton {
-    font-size: 30px;
+    font-size: 25px;
     font-style: italic;
     font-family: 'Gill Sans MT';
     background-color: #c5a880;
@@ -192,6 +192,36 @@ span.stringTremble {
     color: #0f0f0f;
     text-align: center;
     margin-top: 20px;
+  }
+
+  span.Record{
+    background: red;
+    border-radius: 50%;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+    margin-top: 3px;
+  }
+
+  span.Play{
+    background: url("Images/PlayButton.png");
+    background-size: cover;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+    margin-top: 3px;
+  }
+
+  span.Stop{
+    background: url("Images/StopButton.png");
+    background-size: cover;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+    margin-top: 3px;
   }
 
   h1 {

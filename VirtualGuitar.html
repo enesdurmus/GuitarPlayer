@@ -118,22 +118,6 @@
           <span class="note">64</span>
           <span class="note">65</span>
         </li>
-        <li class="GuitarNeck-ul-li">
-          <span class="note">66</span>
-          <span class="note">67</span>
-          <span class="note">68</span>
-          <span class="note">69</span>
-          <span class="note">70</span>
-          <span class="note">71</span>
-        </li>
-        <li class="GuitarNeck-ul-li">
-          <span class="note">72</span>
-          <span class="note">73</span>
-          <span class="note">74</span>
-          <span class="note">75</span>
-          <span class="note">76</span>
-          <span class="note">77</span>
-        </li>
 
         <ul class="Strings">
           <li class="String-li">
@@ -165,9 +149,9 @@
 
 
       <div class="ButtonsContainer">
-        <button class="PlayButton" onclick="PlaySelectedSong()">Play</button>
-        <button class="StopButton" onclick="StopRecord()">Stop</button>
-        <button class="RecordButton" onclick="Record()">Record</button>
+        <button class="PlayButton" onclick="PlaySelectedSong()"><span class="Play"></span>Play</button>
+        <button class="StopButton" onclick="StopSong()"><span class="Stop"></span>Stop</button>
+        <button id="RecordButton" class="RecordButton" onclick="Record()"><span id="recordSpan" class="Record"></span> Record</button>
       </div>
 
       <div class="ComboBoxContainer">
@@ -185,6 +169,24 @@
 </body>
 
 <script>
+
+  //Our note class we need it because of Record and PlayRecord functions.
+  class Note {
+    constructor(note, ms) {
+      this.note = note;
+      this.ms = ms;
+    }
+  }
+
+  // We need this class because of PlaySelectedSong function.
+  class Song {
+    constructor(songName, song) {
+      this.songName = songName;
+      this.song = song;
+    }
+  }
+
+
   var notes = [];
   var rotateList = [];
 
@@ -210,22 +212,6 @@
   fillRotateList();
 
   var trembleList = { transform: rotateList };
-
-  //Our note class we need it because of Record and PlayRecord functions.
-  class Note {
-    constructor(note, ms) {
-      this.note = note;
-      this.ms = ms;
-    }
-  }
-
-  // We need this class because of PlaySelectedSong function.
-  class Song {
-    constructor(songName, song) {
-      this.songName = songName;
-      this.song = song;
-    }
-  }
 
 
   //When we press the string we call this function.
@@ -262,24 +248,25 @@
   // The list that hold records.
   var SongList = [];
 
-  // When we press the play button this function called.
-  async function PlayRecord() {
-    for (let i = 0; i < record.length; i++) {
-      await Wait(record[i].ms);        // We wait according to ms of record
-      if (record.length != 0) {        // If the record is not empty
-        Play(record[i].note);          // We play the note that recorded
-        console.log(record[i].note, record[i].ms);
+  // Play the song according to the given song.
+  async function PlaySong(song) {
+    for (let i = 0; i < song.length; i++) {
+      await Wait(song[i].ms);        // We wait according to ms of record
+      if (song.length != 0 && stopSong == 0) {        // If the record is not empty
+        Play(song[i].note);          // We play the note that recorded
+        console.log(song[i].note, song[i].ms);
       }
       else {
-        console.log("Record is empty")
+        console.log("Record is empty or The StopSong worked")
+        stopSong = 0;
         break;
       }
     }
   }
 
-
-  function StopRecord() {
-    record = []; // We clear the array to stop playing.
+  var stopSong = 0;
+  function StopSong() { // it doesnt work now.
+    stopSong = 1; // We clear the array to stop playing.
   }
 
 
@@ -289,8 +276,10 @@
   function Record() {
     //This function just makes the global variable "isRecording" to 1 or 0 and global variable "time1" equals to dateNow.
     if (isRecording == 0) {
+      record = [];
       time1 = Date.now();
       isRecording = 1;
+      RecordAnimation();
     }
     else {
       //We add the record to the recordList and the comboBox with name that user give us.
@@ -302,26 +291,47 @@
       }
       option.text = songName;
       selectTag.add(option);
-      song = new Song(songName,record);
+      song = new Song(songName, record);
       SongList.push(song);
       isRecording = 0
+      RecordAnimation();
+      selectTag.selectedIndex = selectTag.length - 1; // We choose the last added.
     }
     console.log(isRecording);
   }
 
+  // When we press the play button this function called.
   function PlaySelectedSong() {
-    var songs = document.getElementById("songs");
-    var songName = songs.options[songs.selectedIndex].value;
+    var songs = document.getElementById("songs"); // We get comboBox
+    var songName = songs.options[songs.selectedIndex].value; // We get the selected song's name.
+    console.log(songName);
     for (let i = 0; i < SongList.length; i++) {
-      if(SongList[i].songName == songName){
-        PlayRecord(SongList[i].song);
-      } 
+      if (SongList[i].songName == songName) {  // We find the song from the SongList
+        PlaySong(SongList[i].song);  // And give it to the PlaySong Function.
+      }
+    }
+  }
+
+  // When we press the record this function calls.
+  function RecordAnimation() {
+    var recordSpan = document.getElementById("recordSpan");
+    if (isRecording == 1) {  // until the record is finished the animation goes.
+      colorList = ["red", "white", "red"];
+     recordSpan.animate({ background: colorList }, {duration: 5000, iterations: Infinity});
+    }
+    else { // When it's finished we remove the span and we create it again due to finish the animation.
+      recordSpan.remove();
+      var x = document.createElement("SPAN");
+      var recordButton = document.getElementById("RecordButton");
+      x.setAttribute("id", "recordSpan");
+      x.setAttribute("class", "Record");
+      recordButton.appendChild(x);
     }
   }
 
   window.onclick = e => {
     if (e.target.tagName == "SPAN") { //if we press a note that means a span
-      console.log(e.target.tagName);
+      console.log(e.target.innerText);
       Play(e.target.innerText);       // call the play function.
       if (isRecording == 1) {         // And if we are recording
         let time2 = Date.now();       //we take the time.
