@@ -13,342 +13,6 @@
   <script src="defaultSongs.js" defer></script>
 
 </head>
-<style>
-  body {
-    background-color: #222831;
-  }
-
-  div.Conteiner {
-    width: inherit;
-    height: inherit;
-  }
-
-  div.GuitarBackground {
-    display: block;
-    background-color: #eeeeee;
-    background-size: contain;
-    margin-left: auto;
-    margin-right: auto;
-    width: 380px;
-    height: 225px;
-  }
-
-  div.ButtonsContainer {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  div.ComboBoxContainer {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-  }
-
-  label.ComboBoxLabel {
-    font-size: 22px;
-    background-color: #c5a880;
-    color: #0f0f0f;
-    font-family: 'Gill Sans MT';
-    margin-left: auto;
-    margin-right: auto;
-    font-style: italic;
-    text-align: center;
-  }
-
-  select.ComboBox {
-    font-size: 22px;
-    background-color: #c5a880;
-    color: #0f0f0f;
-    font-family: 'Gill Sans MT';
-    margin-left: 5px;
-    margin-right: auto;
-    font-style: italic;
-    text-align: center;
-  }
-
-  ul.guitarNeck {
-    margin-block-start: 0;
-    justify-content: space-between;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding-left: 1px;
-  }
-
-  li.GuitarNeck-ul-li {
-    display: flex;
-    border-right: 2px solid #8f8f8f;
-    flex-direction: column;
-    width: 30px;
-    height: 225px;
-  }
-
-  ul.firstFret {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding-inline-start: 0;
-  }
-
-  li.firstFret-ul-li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 38px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    color: #0f0f0f;
-    font-size: 15px;
-    font-style: italic;
-    font-family: 'Gill Sans MT';
-  }
-
-  ul li::marker {
-    font-size: 0;
-  }
-
-  ul.Strings {
-    display: block;
-    position: absolute;
-    width: 360px;
-    height: 225px;
-    padding-inline-start: 14px;
-  }
-
-  li.String-li {
-    display: block;
-    width: 100%;
-    height: 38px;
-  }
-
-  span.string {
-    display: flex;
-    z-index: 1;
-    height: 4px;
-    width: 100%;
-    position: relative;
-    top: 17px;
-    box-shadow: 0.04em 0.37em 0.02em 0 rgba(0, 0, 0, .1);
-    background-image: repeating-linear-gradient(50deg, rgba(0, 0, 0, .6), transparent .15em, transparent .2em),
-      linear-gradient(180deg, rgba(0, 0, 0, .1) 10%, hsla(0, 0%, 100%, .25) 15%, hsla(0, 0%, 100%, .8) 30%,
-        hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
-    margin-left: 3px;
-  }
-
-  span.stringTremble {
-    display: flex;
-    z-index: 1;
-    height: 4px;
-    width: 0%;
-    position: relative;
-    top: 17px;
-    box-shadow: 0.04em 0.37em 0.02em 0 rgba(0, 0, 0, .1);
-    background-image: repeating-linear-gradient(50deg, rgba(0, 0, 0, .6), transparent .15em, transparent .2em),
-      linear-gradient(180deg, rgba(0, 0, 0, .1) 10%, hsla(0, 0%, 100%, .25) 15%, hsla(0, 0%, 100%, .8) 30%,
-        hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
-    margin-left: 3px;
-    margin-top: -4px;
-    transform-origin: left;
-  }
-
-  span.note {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    width: 100%;
-    height: 38px;
-    z-index: 2;
-  }
-
-  span.noteFirstFret {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 38px;
-    text-align: left;
-    z-index: 2;
-
-  }
-
-  button.PlayButton {
-    font-size: 25px;
-    background-color: #c5a880;
-    color: #0f0f0f;
-    font-family: 'Gill Sans MT';
-    margin-left: 10%;
-    margin-right: auto;
-    font-style: italic;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  button.StopButton {
-    font-size: 25px;
-    font-style: italic;
-    font-family: 'Gill Sans MT';
-    background-color: #c5a880;
-    color: #0f0f0f;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  button.RecordButton {
-    font-size: 25px;
-    font-style: italic;
-    font-family: 'Gill Sans MT';
-    background-color: #c5a880;
-    margin-left: auto;
-    margin-right: 10%;
-    color: #0f0f0f;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  span.Record {
-    background: red;
-    border-radius: 50%;
-    float: left;
-    width: 30px;
-    height: 30px;
-    margin-right: 4px;
-    margin-top: 3px;
-  }
-
-  span.Play {
-    background: url("Images/PlayButton.png");
-    background-size: cover;
-    float: left;
-    width: 30px;
-    height: 30px;
-    margin-right: 4px;
-    margin-top: 3px;
-  }
-
-  span.Stop {
-    background: url("Images/StopButton.png");
-    background-size: cover;
-    float: left;
-    width: 30px;
-    height: 30px;
-    margin-right: 4px;
-    margin-top: 3px;
-  }
-
-  h1 {
-    color: #eeeeee;
-    font-size: 50px;
-    text-align: center;
-  }
-
-  .slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 15px;
-    border-radius: 5px;
-    background: #c5a880;
-    margin-top: 20px;
-    outline: none;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-
-  .slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #eeeeee;
-    cursor: pointer;
-  }
-
-
-
-  @media screen and (min-width: 900px) {
-
-    div.GuitarBackground {
-      width: 700px;
-      height: 300px;
-    }
-
-
-    li.GuitarNeck-ul-li {
-      width: 60px;
-      height: 300px;
-    }
-
-    span.note {
-      height: 55px;
-    }
-
-    li.firstFret-ul-li {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 48px;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      color: #0f0f0f;
-      font-size: 20px;
-      font-style: italic;
-      font-family: 'Gill Sans MT';
-    }
-
-    ul.Strings {
-      width: 680px;
-      height: 300px;
-      padding-inline-start: 16px;
-    }
-
-    li.String-li {
-      height: 50px;
-    }
-
-    button.PlayButton {
-      font-size: 30px;
-    }
-
-    button.StopButton {
-      font-size: 30px;
-    }
-
-    button.RecordButton {
-      font-size: 30px;
-    }
-
-    span.Record {
-      margin-right: 4px;
-      margin-top: 6px;
-    }
-
-    span.Play {
-      margin-right: 4px;
-      margin-top: 6px;
-    }
-
-    span.Stop {
-      margin-right: 4px;
-      margin-top: 6px;
-    }
-
-    label.ComboBoxLabel {
-      font-size: 30px;
-
-    }
-
-    select.ComboBox {
-      font-size: 30px;
-
-    }
-  }
-</style>
 
 <body>
   <audio id="0" src="Sounds/0.wav" preload="auto"></audio>
@@ -559,8 +223,10 @@
       <div class="ComboBoxContainer">
         <label class="ComboBoxLabel" for="songs"> Choose A Song : </label>
         <select class="ComboBox" id="songs">
+
+          <option>The Godfather</option>
           <option>Pirates Of The Caribbean</option>
-          <option>Rohan Theme</option>
+          
         </select>
       </div>
 
@@ -619,6 +285,7 @@
   //When we press the string we call this function.
   function Play(note) {
     var audio = document.getElementById(note); //We get the audio by the given value. The value is between 0 to 77. all numbers define a note.
+    ClearStringSounds(note); // We pause all sound on the string that we press.
     audio.currentTime = 0; // If we press the same place we restart the audio
     audio.play();
     StringTremble(note); //And when we play sound we tremble the string.
@@ -737,6 +404,16 @@
     var slider = document.getElementById("Slider");
     slider.max = max;  // We set max value.
     slider.value = current + 1;  // And we move the slider.
+  }
+
+  function ClearStringSounds(note) {
+    var string = note % 6; // We get the string
+    for (let i = string; i < 60; i += 6) {  // And we get all sounds on that string
+      if (i != note) {  //except the sound that we press we pause all of it.
+        var audio = document.getElementById(i);
+        audio.pause();
+      }
+    }
   }
 
   window.onclick = e => {

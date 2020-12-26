@@ -1,4 +1,4 @@
-body {
+  body {
     background-color: #222831;
   }
 
@@ -27,10 +27,10 @@ body {
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px; 
+    margin-top: 20px;
   }
 
-  label.ComboBoxLabel{
+  label.ComboBoxLabel {
     font-size: 22px;
     background-color: #c5a880;
     color: #0f0f0f;
@@ -41,7 +41,7 @@ body {
     text-align: center;
   }
 
-  select.ComboBox{
+  select.ComboBox {
     font-size: 22px;
     background-color: #c5a880;
     color: #0f0f0f;
@@ -65,7 +65,7 @@ body {
     display: flex;
     border-right: 2px solid #8f8f8f;
     flex-direction: column;
-    width: 26px;
+    width: 30px;
     height: 225px;
   }
 
@@ -121,7 +121,8 @@ body {
         hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
     margin-left: 3px;
   }
-span.stringTremble {
+
+  span.stringTremble {
     display: flex;
     z-index: 1;
     height: 4px;
@@ -194,7 +195,7 @@ span.stringTremble {
     margin-top: 20px;
   }
 
-  span.Record{
+  span.Record {
     background: red;
     border-radius: 50%;
     float: left;
@@ -204,7 +205,7 @@ span.stringTremble {
     margin-top: 3px;
   }
 
-  span.Play{
+  span.Play {
     background: url("Images/PlayButton.png");
     background-size: cover;
     float: left;
@@ -214,7 +215,7 @@ span.stringTremble {
     margin-top: 3px;
   }
 
-  span.Stop{
+  span.Stop {
     background: url("Images/StopButton.png");
     background-size: cover;
     float: left;
@@ -228,4 +229,106 @@ span.stringTremble {
     color: #eeeeee;
     font-size: 50px;
     text-align: center;
+  }
+
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #c5a880;
+    margin-top: 20px;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #eeeeee;
+    cursor: pointer;
+  }
+
+
+
+  @media screen and (min-width: 900px) {
+
+    div.GuitarBackground {
+      width: 700px;
+      height: 300px;
+    }
+
+
+    li.GuitarNeck-ul-li {
+      width: 60px;
+      height: 300px;
+    }
+
+    span.note {
+      height: 55px;
+    }
+
+    li.firstFret-ul-li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      color: #0f0f0f;
+      font-size: 20px;
+      font-style: italic;
+      font-family: 'Gill Sans MT';
+    }
+
+    ul.Strings {
+      width: 680px;
+      height: 300px;
+      padding-inline-start: 16px;
+    }
+
+    li.String-li {
+      height: 50px;
+    }
+
+    button.PlayButton {
+      font-size: 30px;
+    }
+
+    button.StopButton {
+      font-size: 30px;
+    }
+
+    button.RecordButton {
+      font-size: 30px;
+    }
+
+    span.Record {
+      margin-right: 4px;
+      margin-top: 6px;
+    }
+
+    span.Play {
+      margin-right: 4px;
+      margin-top: 6px;
+    }
+
+    span.Stop {
+      margin-right: 4px;
+      margin-top: 6px;
+    }
+
+    label.ComboBoxLabel {
+      font-size: 30px;
+
+    }
+
+    select.ComboBox {
+      font-size: 30px;
+
+    }
   }

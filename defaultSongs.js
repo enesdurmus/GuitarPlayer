@@ -1,16 +1,137 @@
 function FillDefaultSongs() {
-    record = [];
-    note0 = new Note(0,500);
-    note1 = new Note(1,500);
-    note2 = new Note(2,500);
-    note3 = new Note(3,500);
-    note4 = new Note(4,500);
-    note5 = new Note(1,0);
-    note6 = new Note(5,500);
-    for (let i = 0; i < 6; i++) {
-        record.push(note + "i");
-    }
-    song = new Song("Pirates Of The Caribbean", record);
-    SongList.push(song);
+    Pirates = [];
+    TheGodFather = [];
+    note0 = new Note(15, 550);
+    note1 = new Note(2, 500);
+    note2 = new Note(14, 550);
+    note3 = new Note(14, 550);
+    note4 = new Note(14, 550);
+    note5 = new Note(1, 200);
+    note6 = new Note(7, 550);
+    note7 = new Note(7, 550);
+    note8 = new Note(7, 550);
+    note9 = new Note(19, 500);
+    note10 = new Note(1, 500);
+    note11 = new Note(1, 500);
+    note12 = new Note(14, 500);
+    note13 = new Note(2, 500);
+    note14 = new Note(14, 500);
+
+
+    Pirates.push(note0);
+    Pirates.push(note1);
+    Pirates.push(note2);
+    Pirates.push(note3);
+    Pirates.push(note4);
+    Pirates.push(note5);
+    Pirates.push(note6);
+    Pirates.push(note7);
+    Pirates.push(note8);
+    Pirates.push(note9);
+    Pirates.push(note10);
+    Pirates.push(note11);
+    Pirates.push(note12);
+    Pirates.push(note13);
+    Pirates.push(note14);
+
+
+
+    note0 = new Note(1, 500);
+    note1 = new Note(0, 500);
+    note2 = new Note(18, 500);
+    note3 = new Note(12, 500);
+    note4 = new Note(0, 500);
+    note5 = new Note(18, 500);
+    note6 = new Note(0, 500);
+    note7 = new Note(12, 500);
+    note8 = new Note(0, 500);
+    note9 = new Note(7, 500);
+    note10 = new Note(19, 500);
+    note11 = new Note(1, 600);
+    note12 = new Note(1, 1500);
+    note13 = new Note(0, 500);
+    note14 = new Note(18, 500);
+    note15 = new Note(12, 500);
+    note16 = new Note(0, 500);
+    note17 = new Note(18, 500);
+    note18 = new Note(0, 500);
+    note19 = new Note(12, 500);
+    note20 = new Note(0, 500);
+    note21 = new Note(1, 500);
+    note22 = new Note(20, 500);
+    note23 = new Note(14, 500);
+    note24 = new Note(14, 2000);
+    note25 = new Note(7, 500);
+    note26 = new Note(19, 500);
+    note27 = new Note(12, 500);
+    note28 = new Note(14, 1500);
+    note29 = new Note(7, 500);
+    note30 = new Note(19, 500);
+    note31 = new Note(0, 500);
+    note32 = new Note(15, 1500);
+    note33 = new Note(15, 500);
+    note34 = new Note(19, 500);
+    note35 = new Note(7, 500);
+    note36 = new Note(1, 500);
+    note37 = new Note(19, 600);
+    note38 = new Note(7, 600);
+    note39 = new Note(7, 600);
+    note40 = new Note(1, 600);
+    note41 = new Note(1, 600);
+    note42 = new Note(9, 600);
+    note43 = new Note(15, 600);
+
+
+    TheGodFather.push(note0);
+    TheGodFather.push(note1);
+    TheGodFather.push(note2);
+    TheGodFather.push(note3);
+    TheGodFather.push(note4);
+    TheGodFather.push(note5);
+    TheGodFather.push(note6);
+    TheGodFather.push(note7);
+    TheGodFather.push(note8);
+    TheGodFather.push(note9);
+    TheGodFather.push(note10);
+    TheGodFather.push(note11);
+    TheGodFather.push(note12);
+    TheGodFather.push(note13);
+    TheGodFather.push(note14);
+    TheGodFather.push(note15);
+    TheGodFather.push(note16);
+    TheGodFather.push(note17);
+    TheGodFather.push(note18);
+    TheGodFather.push(note19);
+    TheGodFather.push(note20);
+    TheGodFather.push(note21);
+    TheGodFather.push(note22);
+    TheGodFather.push(note23);
+    TheGodFather.push(note24);
+    TheGodFather.push(note25);
+    TheGodFather.push(note26);
+    TheGodFather.push(note27);
+    TheGodFather.push(note28);
+    TheGodFather.push(note29);
+    TheGodFather.push(note30);
+    TheGodFather.push(note31);
+    TheGodFather.push(note32);
+    TheGodFather.push(note22);
+    TheGodFather.push(note34);
+    TheGodFather.push(note35);
+    TheGodFather.push(note36);
+    TheGodFather.push(note37);
+    TheGodFather.push(note38);
+    TheGodFather.push(note39);
+    TheGodFather.push(note40);
+    TheGodFather.push(note41);
+    TheGodFather.push(note42);
+    TheGodFather.push(note43);
+
+
+    PiratesOfTheCaribbean = new Song("Pirates Of The Caribbean", Pirates);
+    TheGodFather = new Song("The Godfather", TheGodFather);
+
+    SongList.push(PiratesOfTheCaribbean);
+    SongList.push(TheGodFather);
 }
 FillDefaultSongs();
