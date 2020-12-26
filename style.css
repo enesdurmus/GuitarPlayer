@@ -13,7 +13,7 @@ body {
     background-size: contain;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
+    width: 380px;
     height: 225px;
   }
 
@@ -97,7 +97,7 @@ body {
   ul.Strings {
     display: block;
     position: absolute;
-    width: 380px;
+    width: 360px;
     height: 225px;
     padding-inline-start: 14px;
   }

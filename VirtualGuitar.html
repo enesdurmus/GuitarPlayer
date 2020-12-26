@@ -13,14 +13,411 @@
   <script src="defaultSongs.js" defer></script>
 
 </head>
+<style>
+  body {
+    background-color: #222831;
+  }
+
+  div.Conteiner {
+    width: inherit;
+    height: inherit;
+  }
+
+  div.GuitarBackground {
+    display: block;
+    background-color: #eeeeee;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+    width: 380px;
+    height: 225px;
+  }
+
+  div.ButtonsContainer {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  div.ComboBoxContainer {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+  }
+
+  label.ComboBoxLabel {
+    font-size: 22px;
+    background-color: #c5a880;
+    color: #0f0f0f;
+    font-family: 'Gill Sans MT';
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+    text-align: center;
+  }
+
+  select.ComboBox {
+    font-size: 22px;
+    background-color: #c5a880;
+    color: #0f0f0f;
+    font-family: 'Gill Sans MT';
+    margin-left: 5px;
+    margin-right: auto;
+    font-style: italic;
+    text-align: center;
+  }
+
+  ul.guitarNeck {
+    margin-block-start: 0;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-left: 1px;
+  }
+
+  li.GuitarNeck-ul-li {
+    display: flex;
+    border-right: 2px solid #8f8f8f;
+    flex-direction: column;
+    width: 30px;
+    height: 225px;
+  }
+
+  ul.firstFret {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-inline-start: 0;
+  }
+
+  li.firstFret-ul-li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #0f0f0f;
+    font-size: 15px;
+    font-style: italic;
+    font-family: 'Gill Sans MT';
+  }
+
+  ul li::marker {
+    font-size: 0;
+  }
+
+  ul.Strings {
+    display: block;
+    position: absolute;
+    width: 360px;
+    height: 225px;
+    padding-inline-start: 14px;
+  }
+
+  li.String-li {
+    display: block;
+    width: 100%;
+    height: 38px;
+  }
+
+  span.string {
+    display: flex;
+    z-index: 1;
+    height: 4px;
+    width: 100%;
+    position: relative;
+    top: 17px;
+    box-shadow: 0.04em 0.37em 0.02em 0 rgba(0, 0, 0, .1);
+    background-image: repeating-linear-gradient(50deg, rgba(0, 0, 0, .6), transparent .15em, transparent .2em),
+      linear-gradient(180deg, rgba(0, 0, 0, .1) 10%, hsla(0, 0%, 100%, .25) 15%, hsla(0, 0%, 100%, .8) 30%,
+        hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
+    margin-left: 3px;
+  }
+
+  span.stringTremble {
+    display: flex;
+    z-index: 1;
+    height: 4px;
+    width: 0%;
+    position: relative;
+    top: 17px;
+    box-shadow: 0.04em 0.37em 0.02em 0 rgba(0, 0, 0, .1);
+    background-image: repeating-linear-gradient(50deg, rgba(0, 0, 0, .6), transparent .15em, transparent .2em),
+      linear-gradient(180deg, rgba(0, 0, 0, .1) 10%, hsla(0, 0%, 100%, .25) 15%, hsla(0, 0%, 100%, .8) 30%,
+        hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
+    margin-left: 3px;
+    margin-top: -4px;
+    transform-origin: left;
+  }
+
+  span.note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    width: 100%;
+    height: 38px;
+    z-index: 2;
+  }
+
+  span.noteFirstFret {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 38px;
+    text-align: left;
+    z-index: 2;
+
+  }
+
+  button.PlayButton {
+    font-size: 25px;
+    background-color: #c5a880;
+    color: #0f0f0f;
+    font-family: 'Gill Sans MT';
+    margin-left: 10%;
+    margin-right: auto;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  button.StopButton {
+    font-size: 25px;
+    font-style: italic;
+    font-family: 'Gill Sans MT';
+    background-color: #c5a880;
+    color: #0f0f0f;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  button.RecordButton {
+    font-size: 25px;
+    font-style: italic;
+    font-family: 'Gill Sans MT';
+    background-color: #c5a880;
+    margin-left: auto;
+    margin-right: 10%;
+    color: #0f0f0f;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  span.Record {
+    background: red;
+    border-radius: 50%;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+    margin-top: 3px;
+  }
+
+  span.Play {
+    background: url("Images/PlayButton.png");
+    background-size: cover;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+    margin-top: 3px;
+  }
+
+  span.Stop {
+    background: url("Images/StopButton.png");
+    background-size: cover;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+    margin-top: 3px;
+  }
+
+  h1 {
+    color: #eeeeee;
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #c5a880;
+    margin-top: 20px;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #eeeeee;
+    cursor: pointer;
+  }
+
+
+
+  @media screen and (min-width: 900px) {
+
+    div.GuitarBackground {
+      width: 700px;
+      height: 300px;
+    }
+
+
+    li.GuitarNeck-ul-li {
+      width: 60px;
+      height: 300px;
+    }
+
+    span.note {
+      height: 55px;
+    }
+
+    li.firstFret-ul-li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      color: #0f0f0f;
+      font-size: 20px;
+      font-style: italic;
+      font-family: 'Gill Sans MT';
+    }
+
+    ul.Strings {
+      width: 680px;
+      height: 300px;
+      padding-inline-start: 16px;
+    }
+
+    li.String-li {
+      height: 50px;
+    }
+
+    button.PlayButton {
+      font-size: 30px;
+    }
+
+    button.StopButton {
+      font-size: 30px;
+    }
+
+    button.RecordButton {
+      font-size: 30px;
+    }
+
+    span.Record {
+      margin-right: 4px;
+      margin-top: 6px;
+    }
+
+    span.Play {
+      margin-right: 4px;
+      margin-top: 6px;
+    }
+
+    span.Stop {
+      margin-right: 4px;
+      margin-top: 6px;
+    }
+
+    label.ComboBoxLabel {
+      font-size: 30px;
+
+    }
+
+    select.ComboBox {
+      font-size: 30px;
+
+    }
+  }
+</style>
 
 <body>
-  <audio id="0" src="Sounds/00.wav" preload="auto"></audio>
-  <audio id="1" src="Sounds/01.wav" preload="auto"></audio>
-  <audio id="2" src="Sounds/02.wav" preload="auto"></audio>
-  <audio id="3" src="Sounds/03.wav" preload="auto"></audio>
-  <audio id="4" src="Sounds/04.wav" preload="auto"></audio>
-  <audio id="5" src="Sounds/05.wav" preload="auto"></audio>
+  <audio id="0" src="Sounds/0.wav" preload="auto"></audio>
+  <audio id="1" src="Sounds/1.wav" preload="auto"></audio>
+  <audio id="2" src="Sounds/2.wav" preload="auto"></audio>
+  <audio id="3" src="Sounds/3.wav" preload="auto"></audio>
+  <audio id="4" src="Sounds/4.wav" preload="auto"></audio>
+  <audio id="5" src="Sounds/5.wav" preload="auto"></audio>
+  <audio id="6" src="Sounds/6.wav" preload="auto"></audio>
+  <audio id="7" src="Sounds/7.wav" preload="auto"></audio>
+  <audio id="8" src="Sounds/8.wav" preload="auto"></audio>
+  <audio id="9" src="Sounds/9.wav" preload="auto"></audio>
+  <audio id="10" src="Sounds/10.wav" preload="auto"></audio>
+  <audio id="11" src="Sounds/11.wav" preload="auto"></audio>
+  <audio id="12" src="Sounds/12.wav" preload="auto"></audio>
+  <audio id="13" src="Sounds/13.wav" preload="auto"></audio>
+  <audio id="14" src="Sounds/14.wav" preload="auto"></audio>
+  <audio id="15" src="Sounds/15.wav" preload="auto"></audio>
+  <audio id="16" src="Sounds/16.wav" preload="auto"></audio>
+  <audio id="17" src="Sounds/17.wav" preload="auto"></audio>
+  <audio id="18" src="Sounds/18.wav" preload="auto"></audio>
+  <audio id="19" src="Sounds/19.wav" preload="auto"></audio>
+  <audio id="20" src="Sounds/20.wav" preload="auto"></audio>
+  <audio id="21" src="Sounds/21.wav" preload="auto"></audio>
+  <audio id="22" src="Sounds/22.wav" preload="auto"></audio>
+  <audio id="23" src="Sounds/23.wav" preload="auto"></audio>
+  <audio id="24" src="Sounds/24.wav" preload="auto"></audio>
+  <audio id="25" src="Sounds/25.wav" preload="auto"></audio>
+  <audio id="26" src="Sounds/26.wav" preload="auto"></audio>
+  <audio id="27" src="Sounds/27.wav" preload="auto"></audio>
+  <audio id="28" src="Sounds/28.wav" preload="auto"></audio>
+  <audio id="29" src="Sounds/29.wav" preload="auto"></audio>
+  <audio id="30" src="Sounds/30.wav" preload="auto"></audio>
+  <audio id="31" src="Sounds/31.wav" preload="auto"></audio>
+  <audio id="32" src="Sounds/32.wav" preload="auto"></audio>
+  <audio id="33" src="Sounds/33.wav" preload="auto"></audio>
+  <audio id="34" src="Sounds/34.wav" preload="auto"></audio>
+  <audio id="35" src="Sounds/35.wav" preload="auto"></audio>
+  <audio id="36" src="Sounds/36.wav" preload="auto"></audio>
+  <audio id="37" src="Sounds/37.wav" preload="auto"></audio>
+  <audio id="38" src="Sounds/38.wav" preload="auto"></audio>
+  <audio id="39" src="Sounds/39.wav" preload="auto"></audio>
+  <audio id="40" src="Sounds/40.wav" preload="auto"></audio>
+  <audio id="41" src="Sounds/41.wav" preload="auto"></audio>
+  <audio id="42" src="Sounds/42.wav" preload="auto"></audio>
+  <audio id="43" src="Sounds/43.wav" preload="auto"></audio>
+  <audio id="44" src="Sounds/44.wav" preload="auto"></audio>
+  <audio id="45" src="Sounds/45.wav" preload="auto"></audio>
+  <audio id="46" src="Sounds/46.wav" preload="auto"></audio>
+  <audio id="47" src="Sounds/47.wav" preload="auto"></audio>
+  <audio id="48" src="Sounds/48.wav" preload="auto"></audio>
+  <audio id="49" src="Sounds/49.wav" preload="auto"></audio>
+  <audio id="50" src="Sounds/50.wav" preload="auto"></audio>
+  <audio id="51" src="Sounds/51.wav" preload="auto"></audio>
+  <audio id="52" src="Sounds/52.wav" preload="auto"></audio>
+  <audio id="53" src="Sounds/53.wav" preload="auto"></audio>
+  <audio id="54" src="Sounds/54.wav" preload="auto"></audio>
+  <audio id="55" src="Sounds/55.wav" preload="auto"></audio>
+  <audio id="56" src="Sounds/56.wav" preload="auto"></audio>
+  <audio id="57" src="Sounds/57.wav" preload="auto"></audio>
+  <audio id="58" src="Sounds/58.wav" preload="auto"></audio>
+  <audio id="59" src="Sounds/59.wav" preload="auto"></audio>
+  <audio id="60" src="Sounds/60.wav" preload="auto"></audio>
+  <audio id="61" src="Sounds/61.wav" preload="auto"></audio>
+  <audio id="62" src="Sounds/62.wav" preload="auto"></audio>
+  <audio id="63" src="Sounds/63.wav" preload="auto"></audio>
+  <audio id="64" src="Sounds/64.wav" preload="auto"></audio>
+  <audio id="65" src="Sounds/65.wav" preload="auto"></audio>
+
 
 
   <div class="Conteiner">
@@ -151,7 +548,12 @@
       <div class="ButtonsContainer">
         <button class="PlayButton" onclick="PlaySelectedSong()"><span class="Play"></span>Play</button>
         <button class="StopButton" onclick="StopSong()"><span class="Stop"></span>Stop</button>
-        <button id="RecordButton" class="RecordButton" onclick="Record()"><span id="recordSpan" class="Record"></span> Record</button>
+        <button id="RecordButton" class="RecordButton" onclick="Record()"><span id="recordSpan" class="Record"></span>
+          Record</button>
+      </div>
+
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="Slider">
       </div>
 
       <div class="ComboBoxContainer">
@@ -161,9 +563,9 @@
           <option>Rohan Theme</option>
         </select>
       </div>
+
+
     </div>
-
-
 
   </div>
 </body>
@@ -232,7 +634,7 @@
     animatedString.style.width = 100 - Math.trunc(column) * 7 + "%";
     realString.style.width = Math.trunc(column) * 7 + "%";
     // move animatedString to the end of real string
-    animatedString.style.marginLeft = Math.trunc(column) * 7 + ".8%";
+    animatedString.style.marginLeft = Math.trunc(column) * 7 + ".4%";
     // tremble the string.
     animatedString.animate(trembleList, 2500);
   }
@@ -253,6 +655,7 @@
     for (let i = 0; i < song.length; i++) {
       await Wait(song[i].ms);        // We wait according to ms of record
       if (song.length != 0 && stopSong == 0) {        // If the record is not empty
+        SlideTheBar(song.length, i);
         Play(song[i].note);          // We play the note that recorded
         console.log(song[i].note, song[i].ms);
       }
@@ -317,7 +720,7 @@
     var recordSpan = document.getElementById("recordSpan");
     if (isRecording == 1) {  // until the record is finished the animation goes.
       colorList = ["red", "white", "red"];
-     recordSpan.animate({ background: colorList }, {duration: 5000, iterations: Infinity});
+      recordSpan.animate({ background: colorList }, { duration: 5000, iterations: Infinity });
     }
     else { // When it's finished we remove the span and we create it again due to finish the animation.
       recordSpan.remove();
@@ -327,6 +730,13 @@
       x.setAttribute("class", "Record");
       recordButton.appendChild(x);
     }
+  }
+
+  // We call this function in PlaySong.
+  function SlideTheBar(max, current) {
+    var slider = document.getElementById("Slider");
+    slider.max = max;  // We set max value.
+    slider.value = current + 1;  // And we move the slider.
   }
 
   window.onclick = e => {
@@ -342,6 +752,7 @@
       }
     }
   }
+
 </script>
 
 </html>

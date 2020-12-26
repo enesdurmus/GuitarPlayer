@@ -7,13 +7,9 @@ function FillDefaultSongs() {
     note4 = new Note(4,500);
     note5 = new Note(1,0);
     note6 = new Note(5,500);
-    record.push(note0);
-    record.push(note1);
-    record.push(note2);
-    record.push(note3);
-    record.push(note4);
-    record.push(note5);
-    record.push(note6);
+    for (let i = 0; i < 6; i++) {
+        record.push(note + "i");
+    }
     song = new Song("Pirates Of The Caribbean", record);
     SongList.push(song);
 }
