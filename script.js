@@ -99,7 +99,9 @@ async function PlaySong(song) {
 
 var stopSong = 0;
 function StopSong() { // it doesnt work now.
-  stopSong = 1; // We clear the array to stop playing.
+  var slider = document.getElementById("Slider");
+  stopSong = 1;
+  slider.value = 0;
 }
 
 
